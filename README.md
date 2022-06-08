@@ -1,0 +1,2 @@
+# Gruppegenerator
+Lage tilfeldige grupper
