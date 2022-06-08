@@ -79,14 +79,14 @@ def main():
    
     grp_size = 3
     names = elever_eirik + elever_monica
-    grupper = rand_grp(names,grp_size)
+    grps = rand_grp(names,grp_size)
     
     print_to_console = True
     print_to_txt = True
     
     if print_to_txt:
-        print_grp_txt(grupper)
+        print_grp_txt(grps)
     if print_to_console:
-        print_grp(grupper)
+        print_grp(grps)
 
 main()
