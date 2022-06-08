@@ -28,7 +28,14 @@ def print_grp(grp_list):
     #Skrive ut gruppelistene
     i = 1
     for grp in grp_list:
-        print(f"Gruppe {i}: {grp}")
+        print(f"Gruppe {i}: ", end ="")
+        for name in grp:
+            if name == grp[-2]:
+                print(f"{name} ", end ="")
+            elif name == grp[-1]:
+                print(f"og {name}.")
+            else:
+                print(f"{name}, ", end ="")
         i += 1
         
 def print_grp_txt(grp_list):
