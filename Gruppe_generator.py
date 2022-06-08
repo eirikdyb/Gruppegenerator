@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from pylab import randint
-import xlrd, re
+import xlrd
 
 def rand_grp(names, grp_size):
     #Funksjon som tar inn en liste med names og en int som beskriver gruppestørrelse,
