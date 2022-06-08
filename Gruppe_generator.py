@@ -4,7 +4,7 @@ from pylab import randint
 import xlrd
 
 def rand_grp(names, grp_size):
-    #Funksjon som tar inn en liste med names og en int som beskriver gruppestørrelse,
+    #Funksjon som tar inn en liste med navn og en int som beskriver gruppestørrelse,
     #og lager tilfeldige grupper av den størrelsen. Hvis det ikke går opp
     #blir de resterende plassert i grupper (starter på gruppe 1).
 
@@ -53,7 +53,7 @@ def print_grp_txt(grp_list):
         i += 1
     f.close()
         
-def read_name_txt(filename): #Henter inn første element fra hver rad i en nameseliste
+def read_name_txt(filename): #Henter inn første element fra hver rad i en navneliste.
     names = []
     with open(filename,'r') as namelist:
         for line in namelist:
@@ -61,7 +61,7 @@ def read_name_txt(filename): #Henter inn første element fra hver rad i en names
 
     return names
 
-def read_name_xls(filename): #Henter inn første kolonne i excel-arket, gitt 1ST? i 3. kolonne
+def read_name_xls(filename): #Henter inn første kolonne i excel-arket. Tittel i første rad.
     names = []    
     workbook = xlrd.open_workbook(filename)
     worksheet = workbook.sheet_by_name('Ark1')
