@@ -55,7 +55,7 @@ def print_grp_txt(grp_list):
         
 def read_name_txt(filename): #Henter inn første element fra hver rad i en nameseliste
     names = []
-    with open(filename + ".txt",'r') as namelist:
+    with open(filename,'r') as namelist:
         for line in namelist:
             names.append(line.split(None, 1)[0])
 
@@ -63,27 +63,21 @@ def read_name_txt(filename): #Henter inn første element fra hver rad i en names
 
 def read_name_xls(filename): #Henter inn første kolonne i excel-arket, gitt 1ST? i 3. kolonne
     names = []    
-    workbook = xlrd.open_workbook(filename + ".xls")
-    worksheet = workbook.sheet_by_name('Students')
+    workbook = xlrd.open_workbook(filename)
+    worksheet = workbook.sheet_by_name('Ark1')
     num_rows = worksheet.nrows - 1
 
     for i in range(num_rows):
-        klasse = worksheet.cell(i+1,2).value
-        if re.match("1ST?", klasse):
-            names.append(worksheet.cell(i+1,0).value)
+        names.append(worksheet.cell(i+1,0).value)
             
     return names
     
 def main():
-    #elever_eirik = read_name_txt("1televerEirik")
-    #elever_eirik = read_name_xls("allemineelever")
-    elever_eirik = ["Frida", "Rolf Otto", "David", "Alexander", "Elver", "Sigurd", "Ludvig",
-            "Vemund", "Jacob", "Maiken", "Sivert", "Sjur", "Alicja", "Ingeborg", 
-            "Aurora", "Marius", "Storm", "Solange", "Tilde", "Karen", "William"]
-    elever_monica = ["Niki", "Sara", "Eline", "Tuva", "Theodor", "Dennis", "Helene", "Martin",
-                     "Anoop", "Nora", "Jade",  "Stine Lise", "Syver"]
+    #elever_eirik = read_name_txt("1televerEirik.txt")
+    elever_eirik = read_name_xls("1televereirik.xlsx")
+    elever_monica = read_name_xls("1televermonica.xlsx")
    
-    grp_size = 4
+    grp_size = 3
     names = elever_eirik + elever_monica
     grupper = rand_grp(names,grp_size)
     
