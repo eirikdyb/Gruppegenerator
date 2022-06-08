@@ -74,15 +74,25 @@ def read_name_xls(filename): #Henter inn første kolonne i excel-arket, gitt 1ST
             
     return names
     
+def main():
+    #elever_eirik = read_name_txt("1televerEirik")
+    #elever_eirik = read_name_xls("allemineelever")
+    elever_eirik = ["Frida", "Rolf Otto", "David", "Alexander", "Elver", "Sigurd", "Ludvig",
+            "Vemund", "Jacob", "Maiken", "Sivert", "Sjur", "Alicja", "Ingeborg", 
+            "Aurora", "Marius", "Storm", "Solange", "Tilde", "Karen", "William"]
+    elever_monica = ["Niki", "Sara", "Eline", "Tuva", "Theodor", "Dennis", "Helene", "Martin",
+                     "Anoop", "Nora", "Jade",  "Stine Lise", "Syver"]
+   
+    grp_size = 4
+    names = elever_eirik + elever_monica
+    grupper = rand_grp(names,grp_size)
+    
+    print_to_console = True
+    print_to_txt = True
+    
+    if print_to_txt:
+        print_grp_txt(grupper)
+    if print_to_console:
+        print_grp(grupper)
 
-#elever_eirik = read_name_txt("1televerEirik")
-#elever_eirik = read_name_xls("allemineelever")
-elever_eirik = ["Frida", "Rolf Otto", "David", "Alexander", "Elver", "Sigurd", "Ludvig",
-        "Vemund", "Jacob", "Maiken", "Sivert", "Sjur", "Alicja", "Ingeborg", 
-        "Aurora", "Marius", "Storm", "Solange", "Tilde", "Karen", "William"]
-elever_monica = ["Niki", "Sara", "Eline", "Tuva", "Theodor", "Dennis", "Helene", "Martin",
-                 "Anoop", "Nora", "Jade",  "Stine Lise", "Syver"]
-grp_size = 4
-names = elever_eirik + elever_monica
-
-print_grp_txt(rand_grp(names,grp_size))
+main()
