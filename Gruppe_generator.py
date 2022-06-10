@@ -74,17 +74,20 @@ def read_name_xls(filename): #Henter inn første kolonne i excel-arket. Tittel i
     return names
     
 def main():
-    #elever_eirik = read_name_txt("1televerEirik.txt")
-    elever_eirik = read_name_xls("1televereirik.xlsx")
-    elever_monica = read_name_xls("1televermonica.xlsx")
-
-    if len(sys.argv) == 2:
+    print("Skriv inn filnavn. Husk .xls eller .xlsx")
+    filnavn = str(input())
+    
+    if len(sys.argv) == 1:
+        grp_size = int(input("Skriv inn gruppestørrelse: "))
+    elif len(sys.argv) == 2:
         grp_size = int(sys.argv[-1])
     else:
         print("Gruppestørrelse ikke definert")
         print("Bruker standardstørrelse 3")
         grp_size = 3
-    names = elever_eirik + elever_monica
+        filnavn = "elever.xlsx"
+    
+    names = read_name_xls(filnavn)
     grps = rand_grp(names,grp_size)
     
     print_to_console = True
