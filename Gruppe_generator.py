@@ -2,6 +2,7 @@
 
 from pylab import randint
 import xlrd
+import sys
 
 def rand_grp(names, grp_size):
     #Funksjon som tar inn en liste med navn og en int som beskriver gruppestørrelse,
@@ -76,8 +77,13 @@ def main():
     #elever_eirik = read_name_txt("1televerEirik.txt")
     elever_eirik = read_name_xls("1televereirik.xlsx")
     elever_monica = read_name_xls("1televermonica.xlsx")
-   
-    grp_size = 3
+
+    if len(sys.argv) == 2:
+        grp_size = int(sys.argv[-1])
+    else:
+        print("Gruppestørrelse ikke definert")
+        print("Bruker standardstørrelse 3")
+        grp_size = 3
     names = elever_eirik + elever_monica
     grps = rand_grp(names,grp_size)
     
