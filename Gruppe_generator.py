@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from pylab import randint
-import xlrd
+from openpyxl import load_workbook
 import sys
 
 def rand_grp(names, grp_size):
@@ -64,12 +64,12 @@ def read_name_txt(filename): #Henter inn første element fra hver rad i en navne
 
 def read_name_xls(filename): #Henter inn første kolonne i excel-arket. Tittel i første rad.
     names = []    
-    workbook = xlrd.open_workbook(filename)
-    worksheet = workbook.sheet_by_name('Ark1')
-    num_rows = worksheet.nrows - 1
+    workbook = load_workbook(filename)
+    ws = workbook[workbook.sheetnames[0]]
 
-    for i in range(num_rows):
-        names.append(worksheet.cell(i+1,0).value)
+    for row in ws.iter_rows(min_row=2, max_col=1, max_row=ws.max_row, values_only=True):
+        for value in row:
+            names.append(value)
             
     return names
     
