@@ -69,7 +69,8 @@ def read_name_xls(filename): #Henter inn første kolonne i excel-arket. Tittel i
 
     for row in ws.iter_rows(min_row=2, max_col=1, max_row=ws.max_row, values_only=True):
         for value in row:
-            names.append(value)
+            if value:
+                names.append(value)
             
     return names
     
